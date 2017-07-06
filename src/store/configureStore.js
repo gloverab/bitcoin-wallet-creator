@@ -8,7 +8,7 @@ export default function configureStore(initialState) {
     rootReducer,
     initialState,
     compose(
-      applyMiddleware(thunk.withExtraArgument())
+      applyMiddleware(thunk)
     )
 
   )

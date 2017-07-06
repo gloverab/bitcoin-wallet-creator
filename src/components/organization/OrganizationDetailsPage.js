@@ -6,7 +6,6 @@ import * as organizationActions from '../../actions/organizationActions'
 
 class OrganizationDetailsPage extends React.Component {
   constructor (props, context) {
-    debugger
     super (props, context)
   }
 

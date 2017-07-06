@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import thunk from 'redux-thunk'
 import * as actionTypes from './actionTypes'
 
 const apiUrl = "http://5955419c2374e400111e47e2.mockapi.io/api/organizations"
@@ -32,15 +33,18 @@ export const createOrganizationSuccess = (organization) => {
 
 export const createOrganization = (organization) => {
   return (dispatch) => {
-    return Axios.post(apiUrl, organization)
+    dispatch({ type: "CREATING_WALLET" })
+    return Axios.get(newWalletAddressUrl)
       .then(response => {
-        dispatch(createOrganizationSuccess(response.data))
+        organization.walletAddress = response.data.data.address
+        return Axios.post(apiUrl, organization)
       })
       .catch(error => {
         throw(error)
       })
   }
 }
+
 
 export const createWallet = (organization) => {
   return Axios.get(newWalletAddressUrl)
@@ -52,6 +56,7 @@ export const createWallet = (organization) => {
       throw(error)
     })
 }
+
 
 export const fetchOrganizationByIdSuccess = (organization) => {
   return{

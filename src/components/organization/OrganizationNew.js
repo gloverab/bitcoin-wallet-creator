@@ -7,14 +7,13 @@ import * as organizationActions from '../../actions/organizationActions'
 
 class OrganizationNew extends React.Component {
   constructor(props){
-    debugger
     super(props)
   }
 
   handleSubmit(input) {
     this.props.createOrganization(input)
     .then(data => {
-      this.props.router.push(`/organizations`)
+      this.props.router.push(`/organizations/${data.data.id}`)
     })
   }
 
