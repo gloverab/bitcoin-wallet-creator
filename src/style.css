@@ -1,0 +1,40 @@
+#app {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+#app a {
+  transition: .5s ease
+}
+
+#app nav {
+  background-color: #00365B;
+}
+
+#app nav a {
+  color: #ffffff
+}
+
+#app nav a:hover {
+  color:#BFCCD6;
+}
+
+#app .navbar-brand {
+  padding: 0px;
+}
+
+#app .navbar-brand>img {
+  height: 100%;
+  padding: 5px;
+  width: auto;
+}
+
+.about-img {
+  height: 250px;
+  width: auto;
+}
+
+.bottom-7 { margin-bottom:7px; }
+.bottom-10 { margin-bottom:10px; }
+.bottom-15 { margin-bottom:15px; }
+.bottom-17 { margin-bottom:17px; }
+.bottom-30 { margin-bottom:30px; }
