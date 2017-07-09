@@ -1,47 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
 import OrganizationForm from './OrganizationForm'
 import { Link } from 'react-router'
 import * as organizationActions from '../../actions/organizationActions'
 
 class OrganizationsPage extends React.Component{
-  constructor() {
-        super();
-        this.state = {
-            items: [
-                {
-                    id: 1,
-                    label: 'List item 1'
-                },
-                {
-                    id: 2,
-                    label: 'List item 2'
-                },
-                {
-                    id: 3,
-                    label: 'List item 3'
-                },
-                {
-                    id: 4,
-                    label: 'List item 4'
-                }
-            ],
-            hasErrored: false,
-            isLoading: false
-        };
+  constructor(props) {
+        super(props)
     }
 
   render() {
-    if (this.state.hasErrored) {
-      return <p>Sorry! There was an error loading the items.</p>
-    }
-    if (this.state.isLoading) {
-      return <p>Loading...</p>
-    }
-
-
     return(
-      <div>
+
+      <div className="container">
+        {this.props.isFetching ? <h2>Loading...</h2> : <h2></h2>}
         <h1>Organizations</h1>
         <div className="row">
 
@@ -54,7 +27,7 @@ class OrganizationsPage extends React.Component{
               </thead>
 
               <tbody>
-                {this.props.organizations.map((organization, index) => <tr key={index}>
+                {this.props.organizations.items.map((organization, index) => <tr key={index}>
                   <td>{organization.name}</td>
                   <td>{organization.city}</td>
                   <td>{organization.state}</td>

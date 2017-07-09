@@ -15,7 +15,7 @@ class OrganizationDetailsPage extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="container">
         <h1>Organization Details:</h1>
         <OrganizationDetails organization={this.props.organization} />
       </div>

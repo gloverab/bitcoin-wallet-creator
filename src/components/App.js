@@ -23,7 +23,7 @@ const App = (props) => {
         </div>
       </nav>
 
-      <div className="container">
+      <div>
         {props.children}
       </div>
     </div>

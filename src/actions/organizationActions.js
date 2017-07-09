@@ -12,8 +12,13 @@ export const fetchOrganizationsSuccess = (organizations) => {
   }
 }
 
+export const requestOrganizations = () => {
+  console.log("Hello")
+}
+
 export const fetchOrganizations = () => {
   return (dispatch) => {
+    dispatch({type: "REQUEST_ORGANIZATIONS"})
     return Axios.get(apiUrl)
       .then(response => {
         dispatch(fetchOrganizationsSuccess(response.data))
@@ -39,24 +44,14 @@ export const createOrganization = (organization) => {
         organization.walletAddress = response.data.data.address
         return Axios.post(apiUrl, organization)
       })
+      .then(reply => {
+        return dispatch(createOrganizationSuccess(reply.data))
+      })
       .catch(error => {
         throw(error)
       })
   }
 }
-
-
-export const createWallet = (organization) => {
-  return Axios.get(newWalletAddressUrl)
-    .then(response => {
-      organization.walletAddress = response.data.data.address
-      Axios.put(apiUrl + '/' + organization.id, organization)
-    })
-    .catch(error => {
-      throw(error)
-    })
-}
-
 
 export const fetchOrganizationByIdSuccess = (organization) => {
   return{
